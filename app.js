@@ -28,14 +28,11 @@ app.use("/book",bookRoutes);
 app.use("/redirected",getRedirectedRoutes);
 app.use("/feed",feedRoutes);
 app.use("/genres",genresRoutes);
-
-app.use("/",(res,req,next)=>{
-
-    GoogleImageSearch.searchImage("cats")
-.then((res) => {
-    console.log(res); // This will return array of image URLs
-})
+app.use("/",(req,res,next)=>{
+    res.write('<h1>Uplisten API</h1>');
+    res.end();
 });
+
 
 app.use((res,req,next)=>{
  const error=new Error("Not Found");
