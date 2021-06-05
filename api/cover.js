@@ -9,7 +9,7 @@ module.exports = (req, res) => {
     image_search({ query: name })
       .then((data) => {
         if (data.length) {
-          console.log(data);
+          // console.log(data);
           if (data[0].image.startsWith("http")) {
             res.setHeader(
               "Location",
