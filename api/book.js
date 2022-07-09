@@ -24,12 +24,13 @@ module.exports = async (req, res) => {
 
   const { url_iarchive } = book;
 
-  const build_url = `${url_iarchive.replace(
+  var build_url = `${url_iarchive.replace(
     "details",
     "download"
-  )}/${url_iarchive
-    .replace("www.", "")
-    .replace("http://archive.org/details/", "")}_files.xml`;
+  )}/`;
+  // ${url_iarchive.split("/").slice(-1)[0]}_files.xml;
+  const extra=url_iarchive.split("/").slice(-1)[0];
+  build_url=build_url+extra+`_files.xml`
 
   parseString(
     await (await fetch(build_url)).text(),
